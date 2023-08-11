@@ -1,0 +1,45 @@
+
+(defvar ws_icons '{ 
+  "normal": {
+    "1": "󰲡",
+    "2": "󰲣",
+    "3": "󰲥",
+    "4": "󰲧",
+    "5": "󰲩",
+    "6": "󰲫",
+    "7": "󰲭",
+    "8": "󰲯",
+    "9": "󰲱",
+    "10": "󰿭"
+  },
+  "focused": {
+    "1": "󰲠",
+    "2": "󰲢",
+    "3": "󰲤",
+    "4": "󰲦",
+    "5": "󰲨",
+    "6": "󰲪",
+    "7": "󰲬",
+    "8": "󰲮",
+    "9": "󰲰",
+    "10": "󰿬" 
+}}')
+
+(deflisten workspaces "scripts/workspaces")
+
+(defwidget workspaces []
+  (eventbox
+    :hexpand true
+    :onscroll "echo {} | sed -e \"s/up/-1/g\" -e \"s/down/+1/g\" | xargs hyprctl dispatch workspace"
+    (box
+      :style "font-size: 2rem;"
+      :class workspaces
+      :spacing 12 
+      :space-evenly true
+      (for ws in {workspaces.workspaces}
+        (button
+          :onclick "hyprctl dispatch workspace ${ws.number}"
+          (box
+            :class "monitor-${ws.monitor}"
+            "${ws_icons[ws.focused ? "focused" : "normal"][ws.number]}"))))))
+

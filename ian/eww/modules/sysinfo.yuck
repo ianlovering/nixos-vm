@@ -1,0 +1,16 @@
+
+(include "./modules/clock.yuck")
+(include "./modules/sys-stats.yuck")
+(include "./modules/battery.yuck")
+
+(defwidget sysinfo []
+  (box
+    :halign "end"
+    :space-evenly false 
+    :spacing 30
+    :vexpand true
+    :hexpand true
+    (sys-stats)
+    (battery)
+    (clock)))
+

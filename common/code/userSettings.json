@@ -1,0 +1,9 @@
+{
+  "catppuccin.accentColor": "blue",
+  "editor.fontFamily": "'MesloLGS NF', 'monospace', monospace",
+  "extensions.autoCheckUpdates": false,
+  "update.mode": "none",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.preferredDarkColorTheme": "Catppuccin Mocha"
+}

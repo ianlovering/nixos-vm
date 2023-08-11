@@ -1,0 +1,30 @@
+
+(defwidget sys-stats []
+  (box
+    :class "sys-stats"
+    :spacing 12
+    :space-evenly true
+    :vexpand true
+    :hexpand true
+    :width 90
+    (circular-progress
+      :class "cpu-usage-bar"
+      :value {EWW_CPU.avg}
+      :thickness 4
+      :start-at 75
+      "")
+
+    (circular-progress
+      :class "memory-usage-bar"
+      :value {EWW_RAM.used_mem_perc}
+      :thickness 4
+      :start-at 75
+      "")
+
+    (circular-progress
+      :class "disk-usage-bar"
+      :value {EWW_DISK["/"].used_perc}
+      :thickness 4
+      :start-at 75
+      :clockwise true
+      "")))
