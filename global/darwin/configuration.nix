@@ -85,7 +85,7 @@
         }
         {
           name = "nix-ide";
-          publisher = "noortheen";
+          publisher = "jnoortheen";
           version = "0.2.2";
           sha256 = "8f038cfba2e71f20a4be13935524d466f831efb8c083a845082a41a98f00c488";
         }
