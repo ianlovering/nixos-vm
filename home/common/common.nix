@@ -132,7 +132,7 @@
   programs.vscode = {
     enable = true;
     userSettings = {
-      "catppuccin.accentColor" = "blue";
+      "catppuccin.accentColor" = "Blue";
       "editor.fontFamily" = "'MesloLGS NF', 'monospace', monospace";
       "extensions.autoCheckUpdates" = false;
       "update.mode" = "none";
