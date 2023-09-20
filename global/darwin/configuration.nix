@@ -2,15 +2,27 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ self, config, pkgs, ... }:
 
 {
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-  }; 
+  # Necessary for using flakes on this system.
+  nix.settings.experimental-features = "nix-command flakes";
 
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system.stateVersion = 4;
+
+  # The platform the configuration will be used on.
+  nixpkgs.hostPlatform = "aarch64-darwin";
+ 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Auto upgrade nix package and the daemon service.
+  services.nix-daemon.enable = true;
+  # nix.package = pkgs.nix;
+
+  services.yabai.enable = true;
 
   environment.systemPackages = with pkgs; [
     zsh-powerlevel10k
@@ -21,6 +33,7 @@
     jaq
     ripgrep
     jc
+    less
 
     nodePackages.pyright
     ansible-language-server
@@ -30,6 +43,8 @@
     nodePackages.eslint_d
     stylua
 
+    iterm2
+    utm
 
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
@@ -68,6 +83,12 @@
           version = "0.0.3";
           sha256 = "0c84e02de75a3b421faedb6ef995e489a540ed46b94577388d74073d82eaadc3";
         }
+        {
+          name = "nix-ide";
+          publisher = "noortheen";
+          version = "0.2.2";
+          sha256 = "8f038cfba2e71f20a4be13935524d466f831efb8c083a845082a41a98f00c488";
+        }
       ];
     })
 
@@ -80,5 +101,16 @@
 
   environment.variables.EDITOR = "nvim";
   environment.pathsToLink = [ "/share/zsh" ];
+
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      font-awesome
+      meslo-lgs-nf
+      jost
+      roboto
+      material-design-icons
+    ];
+  };
 
 } 

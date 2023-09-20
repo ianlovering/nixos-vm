@@ -1,7 +1,0 @@
-
-(defwidget audio-controls []
-  (label
-    :class "centre-mod inactive"
-    :style "font-size: 1.5rem;"
-    :text "󰕾 󰍬 󰹑")
-)
