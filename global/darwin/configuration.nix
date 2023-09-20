@@ -45,6 +45,7 @@
 
     iterm2
     utm
+    keepassxc
 
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
