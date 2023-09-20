@@ -1,0 +1,24 @@
+(defpoll networks :interval "5s" `ip --details --json addr | jaq -r '
+  [.[]| select(.linkinfo == null and .link_type == "ether")]'`)
+
+(defwidget networks []
+  (box
+    :space-evenly false
+    (for net in {networks}
+      (box
+        :class "centre-mod"
+        :space-evenly false
+        (label
+          :class "${net.operstate == "UP" ? "network-icon" : "inactive"}"
+          :style "font-size: 1.5rem;"
+          :text "󰈀 ")
+        (label
+          :class "${net.operstate == "UP" ? "network-interface" : "inactive"}"
+          :text "${net.ifname} ")
+        (label
+          :class "${net.operstate == "UP" ? "network-ip" : "inactive"}"
+	  :text "${arraylength(net.addr_info) > 0 ? net.addr_info[0].local : ''} ")
+        (label
+          :class "${net.operstate == "UP" ? "network-prefixlen" : "inactive"}"
+          :text "${arraylength(net.addr_info) > 0 ? '/' + net.addr_info[0].prefixlen : ''}")))))
+
