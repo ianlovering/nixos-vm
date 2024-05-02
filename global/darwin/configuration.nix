@@ -30,6 +30,7 @@
     zsh-history-substring-search
 
     git
+    git-credential-manager
     jaq
     ripgrep
     jc
