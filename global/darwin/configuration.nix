@@ -56,6 +56,7 @@
         eamodio.gitlens
         golang.go
         jnoortheen.nix-ide
+        github.vscode-pull-request-github
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "catppuccin-vsc-icons";
