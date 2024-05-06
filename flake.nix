@@ -61,7 +61,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.ian = import ./home/nixos/crest/crest.nix;
+            home-manager.users.crest = import ./home/nixos/crest/crest.nix;
             home-manager.users.root = import ./home/nixos/root/root.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass
