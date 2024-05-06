@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +31,6 @@
         specialArgs = { inherit inputs; };
         modules = [ 
           { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
-          hyprland.nixosModules.default
           { programs.hyprland.enable = true; }
           ./global/nixos/configuration.nix
           home-manager.nixosModules.home-manager
@@ -52,6 +46,30 @@
         ];
       };
 
+      nixosConfigurations.crest = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          { 
+            nix.registry.nixpkgs.flake = inputs.nixpkgs;
+            nix.settings.experimental-features = [ "nix-command" "flakes" ];
+          }
+          ./global/crest/configuration.nix
+          ./global/crest/cli.nix
+          ./global/crest/desktop.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.ian = import ./home/nixos/crest/crest.nix;
+            home-manager.users.root = import ./home/nixos/root/root.nix;
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
+      };
+      
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations."Blacky" = nix-darwin.lib.darwinSystem {
