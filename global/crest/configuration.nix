@@ -5,6 +5,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
 
   networking.hostName = "crest"; # Define your hostname.
   # Pick only one of the below networking options.
