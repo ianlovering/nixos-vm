@@ -53,7 +53,7 @@
   users.users.crest = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
-    initialPAssword = "crest";
+    initialPassword = "crest";
   #   packages = with pkgs; [
   #     firefox
   #     tree
