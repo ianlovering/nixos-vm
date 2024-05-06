@@ -16,7 +16,7 @@
   };
 
   # outputs = { self, nixpkgs, hyprland, picker, home-manager }:
-  outputs = { self, nixpkgs, nix-darwin, hyprland, home-manager } @inputs :
+  outputs = { self, nixpkgs, nix-darwin, home-manager } @inputs :
     let
       system = "x86_64-linux";
     in {
