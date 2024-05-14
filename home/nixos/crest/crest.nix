@@ -33,5 +33,11 @@
       };
     };
   };
+  
+  programs.git = {
+    enable = true;
+    userEmail = "ian.lovering@crest-approved.org";
+    userName = "Ian Lovering";
+  };
 }
 

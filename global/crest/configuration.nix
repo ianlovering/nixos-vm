@@ -53,7 +53,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.crest = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "networkmanager" "wheel" "docker" ]; # Enable ‘sudo’ for the user.
     initialPassword = "crest";
   #   packages = with pkgs; [
   #     firefox

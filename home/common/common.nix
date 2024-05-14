@@ -1,14 +1,24 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+  #imports = [ inputs.catppuccin.homeManagerModules.catppuccin ];
+
+  #catppuccin.flavour = "mocha";
+  
   home.stateVersion = "22.11";
 
   programs.home-manager.enable = true;
 
+  # very ugly hack
+  xdg.configFile."catppuccin-zsh-syntax-highlighting" = {
+    source = ./catppuccin-zsh-syntax-highlighting;
+    target = "catppuccin-zsh-syntax-highlighting";
+  };
+  
   programs.zsh = {
     enable = true;
     enableCompletion = false;
-    enableSyntaxHighlighting = false;
+    syntaxHighlighting.enable = false;
 
     shellAliases = {
       ip = "ip --color";
@@ -23,7 +33,7 @@
 
     oh-my-zsh = {
       enable = true;
-      # plugins = [ "colored-man-pages" ];
+      plugins = [ "colored-man-pages" ];
     };
 
     initExtraFirst = ''
@@ -55,6 +65,7 @@
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme;
 
       # load and configure syntax highlighting and the history search
+      source ''${XDG_CONFIG_HOME:-~/.config}/catppuccin-zsh-syntax-highlighting/catppuccin_mocha-zsh-syntax-highlighting.zsh
       source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
       bindkey '^[OA' history-substring-search-up
@@ -65,7 +76,7 @@
       # configure colours for man pages
       #less_termcap[mb]="''${fg_bold[blue]}"
       #less_termcap[md]="''${fg_bold[blue]}"
-      #less_termcap[so]="''${fg_bold[black]}''${bg[yellow]}"
+      less_termcap[so]="''${fg_bold[blue]}''${bg[black]}"
       #less_termcap[us]="''${fg_bold[magenta]}"
 
     '';
@@ -130,7 +141,7 @@
   };
 
   programs.vscode = {
-    enable = true;
+    enable = false;
     userSettings = {
       "catppuccin.accentColor" = "Blue";
       "editor.fontFamily" = "'MesloLGS NF', 'monospace', monospace";

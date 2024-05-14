@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-old.url = "github:NixOS/nixpkgs/c4b3e961671c8dcc66a87f0a62d82eeff789fa0d";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -13,10 +14,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    catppuccin = {
+      url = "github:catppuccin/nix";
+    };
+    
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # outputs = { self, nixpkgs, hyprland, picker, home-manager }:
-  outputs = { self, nixpkgs, nix-darwin, home-manager } @inputs :
+  outputs = { self, nixpkgs, nix-darwin, home-manager, catppuccin, ... } @inputs :
     let
       system = "x86_64-linux";
     in {
@@ -31,6 +41,7 @@
         specialArgs = { inherit inputs; };
         modules = [ 
           { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
+          #catppuccin.nixosModules.catppuccin
           { programs.hyprland.enable = true; }
           ./global/nixos/configuration.nix
           home-manager.nixosModules.home-manager
@@ -54,9 +65,11 @@
             nix.registry.nixpkgs.flake = inputs.nixpkgs;
             nix.settings.experimental-features = [ "nix-command" "flakes" ];
           }
+          #catppuccin.nixosModules.catppuccin
           ./global/crest/configuration.nix
           ./global/crest/cli.nix
           ./global/crest/desktop.nix
+          ./global/crest/aws-dev.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
