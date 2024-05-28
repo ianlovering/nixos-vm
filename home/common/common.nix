@@ -24,6 +24,7 @@
       ip = "ip --color";
       vim = "nvim";
       vi = "nvim";
+      ns = "IN_NIX_SHELL=pure nix shell";
     };
 
     history = {
@@ -68,16 +69,18 @@
       source ''${XDG_CONFIG_HOME:-~/.config}/catppuccin-zsh-syntax-highlighting/catppuccin_mocha-zsh-syntax-highlighting.zsh
       source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+      
       bindkey '^[OA' history-substring-search-up
       bindkey '^[OB' history-substring-search-down
       typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=yellow,fg=black,bold'
       typeset -g HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=black,bold'
 
       # configure colours for man pages
-      #less_termcap[mb]="''${fg_bold[blue]}"
-      #less_termcap[md]="''${fg_bold[blue]}"
-      less_termcap[so]="''${fg_bold[blue]}''${bg[black]}"
-      #less_termcap[us]="''${fg_bold[magenta]}"
+      bar_background="\033[48;2;69;71;90m"
+      less_termcap[mb]="''${fg_bold[cyan]}"
+      less_termcap[md]="''${fg_bold[cyan]}"
+      less_termcap[so]="''${fg_bold[yellow]}''$(echo -e ''${bar_background})"
+      less_termcap[us]="''${fg_bold[magenta]}"
 
     '';
   };

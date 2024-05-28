@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xkbConfigRegistry SYSTEM "xkb.dtd">
+<xkbConfigRegistry version="1.1">
+
+  <modelList>
+    <model>
+      <configItem>
+        <name>mechanical_mini</name>
+        <description>Mechanical Mini</description>
+        <vendor>Logitech</vendor>
+      </configItem>
+    </model>
+  </modelList>
+</xkbConfigRegistry>
+

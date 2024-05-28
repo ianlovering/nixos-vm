@@ -21,6 +21,8 @@
   environment.systemPackages = with pkgs; [
     foot
     guvcview
+    gnome.gnome-tweaks
+    gnome.gnome-themes-extra
     catppuccin-gtk
     chromium
     
@@ -39,7 +41,6 @@
         #  customUIColors = {};
         #})
         catppuccin.catppuccin-vsc-icons
-        #pkgs.vscode-extensions.catppuccin.catppuccin-vsc-icons
         ms-python.python
         ms-pyright.pyright
         eamodio.gitlens

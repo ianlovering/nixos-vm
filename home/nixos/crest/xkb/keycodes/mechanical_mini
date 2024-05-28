@@ -1,0 +1,11 @@
+default xkb_keycodes "mechanical_mini" {
+   include "evdev"
+
+   <TLDE> =  94;
+   <LSGT> =  49;
+   <LALT> = 133;
+   <LWIN> = 64;
+   <RALT> = 134;
+   <RWIN> = 105;
+   <RCTL> = 108;
+};

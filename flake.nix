@@ -42,13 +42,19 @@
         modules = [ 
           { nix.registry.nixpkgs.flake = inputs.nixpkgs; }
           #catppuccin.nixosModules.catppuccin
+          catppuccin.homeManagerModules.catppuccin
           { programs.hyprland.enable = true; }
           ./global/nixos/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.ian = import ./home/nixos/ian/ian.nix;
+            home-manager.users.ian = {
+              imports = [
+                ./home/nixos/ian/ian.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
+            };
             home-manager.users.root = import ./home/nixos/root/root.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass
@@ -74,7 +80,12 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.crest = import ./home/nixos/crest/crest.nix;
+            home-manager.users.crest = {
+              imports = [
+                ./home/nixos/crest/crest.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
+            };
             home-manager.users.root = import ./home/nixos/root/root.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass

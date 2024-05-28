@@ -1,0 +1,4 @@
+! model		=	keycodes
+  mechanical_mini =	mechanical_mini
+
+! include %S/base
