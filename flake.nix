@@ -76,6 +76,7 @@
           ./global/crest/cli.nix
           ./global/crest/desktop.nix
           ./global/crest/aws-dev.nix
+          ./global/crest/hyprland.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

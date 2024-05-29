@@ -14,6 +14,11 @@
     target = "xkb";
   };
   
+  xdg.configFile."hyprland" = {
+    source = ./hyprland.conf;
+    target = "hypr/hyprland.conf";
+  };
+  
   xdg.enable = true;
   catppuccin = {
     #enable = true;
@@ -30,7 +35,7 @@
     settings = {
       main = {
         #include="/home/crest/.config/foot/catppuccin-mocha.conf"; 
-        font="MesloLGS NF:style=Regular:size=12, Noto Color Emoji:size=12"; 
+        font="MesloLGS NF:style=Regular:size=10, Noto Color Emoji:size=10"; 
       };
     };
   };
