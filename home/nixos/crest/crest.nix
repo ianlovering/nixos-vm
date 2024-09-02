@@ -83,6 +83,13 @@
         region = "eu-west-1";
         output = "json";
       };
+      "profile Ian-Admin" = {
+        sso_session = "Cirrus";
+        sso_account_id = "357791706817";
+        sso_role_name = "AdministratorAccess";
+        region = "eu-west-1";
+        output = "json";
+      };
       "sso-session Cirrus" = {
         sso_start_url = "https://d-93675f9fee.awsapps.com/start";
         sso_region = "eu-west-1";

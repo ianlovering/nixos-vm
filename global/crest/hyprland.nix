@@ -1,5 +1,12 @@
 { config, lib, pkgs, ... }:
 {
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+  
   programs.hyprland.enable = true;
   #programs.hyprland.package = pkgs.hyprland.override {debug = true;};
   
