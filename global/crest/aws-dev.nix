@@ -2,7 +2,8 @@
 {
   environment.systemPackages = with pkgs; [
     awscli2
-    inputs.nixpkgs-old.legacyPackages."${pkgs.system}".git-remote-codecommit
+    git-remote-codecommit
+    #inputs.nixpkgs-old.legacyPackages."${pkgs.system}".git-remote-codecommit
     postman
   ];
  

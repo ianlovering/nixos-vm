@@ -25,6 +25,9 @@
     gnome.gnome-themes-extra
     catppuccin-gtk
     chromium
+    wireshark
+    zap
+    openssl
     
     (vscode-with-extensions.override {
       vscodeExtensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
